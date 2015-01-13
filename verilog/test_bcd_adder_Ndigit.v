@@ -1,22 +1,40 @@
 module Test_BCD_adder_Ndigit;   
-    wire [11:0] s;
+    
+    parameter N = 12; //should be same as in bcd_adder_Ndigit.v
+
+    wire [N-1:0] s;
     wire cout;
 
-    reg [11:0] a;
-    reg [11:0] b;
+    reg [N-1:0] a;
+    reg [N-1:0] b;
     reg cin; 
 
     bcd_adder_Ndigit uut (
         s,cout,a,b,cin
-   );
+    );
+
+    integer i;
     
     initial begin
         a = 0;  b = 0;  cin = 0;
 
-        #10; 
-        	 a=12'b010010011001; b=12'b010010010000; cin=1'b0; //49 + 49
-        #10  a=12'b000100010001; b=12'b001000011100; cin=1'b0; //11 + 21
-        #10  a=12'b000001110101; b=12'b000001000000; cin=1'b0; //7 + 4
+        #10;
+            for(i = 0; i < N; i = i + 1) begin
+                a[i] = i % 2;
+                b[i] = i % 2;
+            end
+        #10;
+            for(i = 0; i < N; i = i + 1) begin
+                if(i % 4 == 0) begin
+                    a[i] = 0; b[i] = 1;
+                end
+                if(i % 4 != 0) begin
+                    a[i] = 1; b[i] = 0;
+                end
+                    
+            end 
+        //	 a=12'b010010011001; b=12'b010010010000; cin=1'b0; 
+        //#10  a=12'b000001110101; b=12'b000001000000; cin=1'b0;
         //#10  a=8'b00000111; b=8'b00000100; cin=1'b1; //7 + 4, with carry
         //#10  a=8'b00001001; b=8'b00001001; cin=1'b0; //9 + 9
         //#10  a=8'b00001001; b=8'b00001001; cin=1'b1; //9 + 9, with carry
