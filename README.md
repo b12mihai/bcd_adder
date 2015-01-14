@@ -6,5 +6,14 @@ Sumator BCD 1 digit + 2 digit in Verilog
 
 Compilare: 
 
-    $ make bcd_adder_2digit    # pentru varianta 2 digit
-    $ make bcd_adder           # pentru varianta 1 digit
+Pentru varianta parametrizabila, cu N digits. N e configurabil din fisierul verilog
+
+    $ make bcd_adder_Ndigit    
+
+Pentru varianta cu 2 digiti:
+
+    $ make bcd_adder_2digit    
+
+Pentru varianta cu 1 digit
+
+    $ make bcd_adder           

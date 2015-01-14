@@ -11,11 +11,11 @@ module full_adder(s, cout, a, b, cin);
 	wire and_up;
 	wire and_down;
 
-	xor(xor1, a, b);
-	xor(s, xor1, cin);
+	my_xor X1(xor1, a, b);
+	my_xor X2(s, xor1, cin);
 
-	and(and_up, xor1, cin);
-	and(and_down, a, b);
+	my_and A1(and_up, xor1, cin);
+	my_and A2(and_down, a, b);
 
-	or(cout, and_up, and_down);
+	my_or O1(cout, and_up, and_down);
 endmodule
