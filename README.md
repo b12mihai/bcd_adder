@@ -17,3 +17,12 @@ Pentru varianta cu 2 digiti:
 Pentru varianta cu 1 digit
 
     $ make bcd_adder           
+
+Rularea se poate face prin:
+
+    $ vvp <nume_executabil>
+    $ ./<nume_executabil>
+
+Fiecare executabil ar trebui sa faca dump unui fisier ''.vcd'' care poate fi deschis cu gtkwave
+
+    $ gtkwave <fisier_vcd>
