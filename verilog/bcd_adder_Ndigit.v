@@ -1,7 +1,7 @@
 module bcd_adder_Ndigit(sum,cout,x,y,cin);
 	
-    parameter N = 12; //number of bits required. Must be 4 * M
     parameter M = 3; //number of digits
+    parameter N = 4 * M; //number of bits required. Must be 4 * M
 
 
 	input [N-1:0] x,y;
